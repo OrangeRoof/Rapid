@@ -1,0 +1,13 @@
+Layout of web system:
+	Node.js serving website: SUBs to telemServer, REQ with serialServer
+		- responsible for receiving data from telemServer, storing it in graph form
+		- also for Requesting to serialServer (commander.py stuff), receiving response from commander.py
+
+	Python telemServer: SUBs to serialServer, PUBs to Website
+		- receives python objects for processing
+		- replaceable telem processor; does calculations, other stuff, depending on project
+		- no visuals involved
+
+	Python serialServer: PUBs to telemServer, REP from Website
+		- takes in data at baud rate and sends it as python objects to telemServer
+		- also may receive Requests from website directly; send to serial, and reply as needed
