@@ -1,0 +1,36 @@
+{# Handy guide to jinja2: anything in {{ }} or {% %} is replaced with whats inside #}
+{# sptp is actually (['port1', 'port2', port3'], ['tp1', 'tp2', tp3']) when expanded #}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GSE</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+
+  </head>
+  <body>
+    <h1><img src="./images/mainlogo.png" height="30" width="30">Bruinspace GSE</h1>
+
+    <p>
+    The GSE has found {{sptp[0]|length}} serial ports and {{sptp[1]|length}} telemetry processors.
+    </p>
+    <form tag="serial" action="/makeconf" method="get">
+    	{% for s in sptp[0] %}
+        <p>
+          Pair {{s}} with
+	  <select name="{{s}}">
+            <option value="">Nothing</option>
+	    {% for t in sptp[1] %}
+            <option value="{{t}}"> {{t}} </option>
+	    {% endfor %}
+        </select>
+      </p>
+      {% endfor %}
+      <input type="submit"></input>
+    </form>
+  </body>
+</html>

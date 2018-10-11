@@ -1,0 +1,2 @@
+serialmanager issues: 
+1. what is a read is blocking? there is a timeout, but what does that return?

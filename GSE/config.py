@@ -46,6 +46,7 @@ PACKETMAP = {
     'voltage':10000,
     'current':10000, 
     'flight_state':-1, 
+# here lies some arbitrary divider
     'exp_time':1e7, 
     'altitude':333000, 
     'velocity_x':3500, 
