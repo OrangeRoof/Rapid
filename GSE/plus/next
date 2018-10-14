@@ -1,6 +1,0 @@
-Current:
-- serial_manager can get ports and open certain ones
-- bluedawn_tp processes raw bytes and returns a displayable list
-
-Next step:
-- a flask app (server_plus.py) that imports the two, and runs alongside a clientside js that gets data via REST

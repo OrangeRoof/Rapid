@@ -44,10 +44,20 @@ def get_ports():
     # Info.device is a string describing the port of the device
     return [p.device for p in list_ports.comports()]
 
-def read():
+def get_serial(port):
+    if type(port) != str:
+        raise Exception('serial_manager.get_serial() was not provided with a string name!')
+    try:
+        return(list(filter(lambda x: x.name == port, current_open_ports))[0])
+    except:
+        raise IndexError('no ports that matched {}'.format(port))
+
+def read_all():
     # given current open serials, return (for each serial):
     # the line of data in the serial buffer, as well as the name of the port
     # zip merges the two lists into tuples with 2 elements each
+    #
+    # in terms of the server, this isn't really useful except for the first initialization stage
     global current_open_ports
     d = [p.readline() for p in current_open_ports]
     return list(zip(d, [s.name for s in current_open_ports]))
@@ -56,7 +66,7 @@ def write(port, msg):
     # writes message to serial port chosen.
     # port is the name of the port itself, msg can be anything
     global current_open_ports
-    p = list(filter(lambda p: p.device == port, current_open_ports))
+    p = list(filter(lambda p: p.name == port, current_open_ports))
     if len(p) == 0:
         raise(Exception('Serial port {} not found in open ports'.format(port)))
 

@@ -1,40 +1,58 @@
 import serial_manager_plus
 import tp_manager
-import threading
+import logging
+import datetime
+import json
 
-open_get = []
+# of format [('port', function)...]
+gets = []
 
 def serial_gui_factory(serial, tp, period=5):
     def get():
-        return(tp.process(serial.readline()))
+        port = serial.name
+        l = tp.process(serial.readline())
+        logging.info('{}: {}'.format(tp.__name__, l))
+        return(l)
     # tuple factory. Inputs a serial object and a tp object and the frequency
     # creates a function that reads from the serial and processes in the tp, 
-    # then binds it to a Timer object that runs every period seconds
+    # logs it. assumes that a logfile was created before (logging.basicConfig)
     return get
 
 def start_serial(args):
-    global open_get
-    tp_manager.import_tp()
     # Expects input of the type [('serial', 'tp') ...]
+    # NOTICE THE STRING TYPES
     # Open tp ports,
     # input: the form data from /config's submit.
     # sanitizes and converts form into a list,
     # then filters list for serial/tp pairs.
-    # returns list of get() functions.
+    # opens, builds functions, and adds to gets
+
+    global gets
+    # filter args [('name', 'tp')] for tuples where 'tp' is something
+    args = list(filter(lambda n: n[1], args))
+    tp_manager.import_tp()
+    logging.basicConfig(filename=str(datetime.datetime.now()),
+                        format='%(asctime)s %(message)s',
+                        datefmt='%I:%M:%S',
+                        level=logging.INFO)
     for stp in args:
         # serial at stp[0], tp at stp[1]
         serial_manager_plus.open(stp[0]) 
-        open_get.append(serial_gui_factory(serial_manager_plus.current_open_ports[-1]), tp_manager.get_tp(stp[1])) 
+        gets.append((
+            stp[0],
+            serial_gui_factory(
+                serial_manager_plus.get_serial(stp[0]),
+                tp_manager.get_tp(stp[1]))))
+
 
 def read(port):
     # input: str port location ('COM1' or '/dev/tty.L')
-    # goes through all get() functions and compares port to __str__.
-    # if match found, calls get() and processes
+    # goes through all tuples in get and compare names 
+    # if match found, calls get() (g[1]) and returns list output
     # the idea is the frontend js controls refresh rate:
-    # user calls the refresh every x seconds, js GETs /read
-    # every x seconds, its processed every x seconds.
-    # why? server does as leas
-    ## NOTE: this doensn't work. If we do have multiple devices looking they'd be calling get() at different rates and displaying different results, adding load to the server. Define a timer function that calls get() at sepcified times (so you need to know the frequency of these actions), and then log those into a text file.
-    global open_get
-    return 
-    pass
+    # user calls the refresh every x seconds, js GETs /read, server does least
+    global gets
+    for g in gets:
+        if g[0] == port:
+            return(json.dumps(g[1]()))
+    raise Exception('Open port matching {} not found!'.format(port))
