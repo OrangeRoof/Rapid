@@ -25,8 +25,9 @@ def getport():
 
 @app.route('/monitor')
 def monitor():
-    # serve monitor page here
-    pass
-
+    l = []
+    for p, f in flask_helper.gets:
+        l.append((p, f()))
+    return render_template('monitor.j2', ports = l)
 if __name__ == '__main__':
     app.run(debug=True)
