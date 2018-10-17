@@ -75,7 +75,7 @@ void set_pin(String type, int pinNumber);
 void jump_reset();
 bool sd_test();
 // This calls the address 0 which apparently "resets" the arduino
-void(* soft_reset) (void) = 0;
+//void(* soft_reset) (void) = 0;
 
 void setup()
 {
@@ -93,6 +93,7 @@ void setup()
 	// jump_reset Assumes there's a jump cable from pin D10 to RESET, don't use it for other things in this test!
 	digitalWrite(10, HIGH);
 	pinMode(10, OUTPUT);
+  Serial.println("setup fin");
 }
 
 
@@ -147,9 +148,10 @@ void loop()
 				case 's':
 					// USING THIS FOR SOFTWARE RESET
 					Serial.println("GSE Soft Reset Recieved");
-					soft_reset();
+					//soft_reset();
 					break;
 				case 'q':
+          Serial.println(get_telemetry());
 					Serial.println("GSE Read Pin Command Received");
 					break;
 				case 'd':
@@ -171,7 +173,7 @@ void loop()
 		buffer[res] = '\0'; 
 	} 
 	//Collect telemetry
-	data_str += get_telemetry();
+	//data_str += get_telemetry();
 
 	// Time elapsed
 	double dt = millis() - start_time;
@@ -181,7 +183,7 @@ void loop()
 		data_str += nff_str;
 	}
 
-	//Serial.println("printing data str");
+	Serial.println("printing data str");
 	//send data packet to GSE
 	Serial.println(data_str); 
 	delay(1000);
@@ -194,9 +196,9 @@ bool sd_test() {
 	File t = SD.open("test.txt");
 	t.println("wholesome holes");
 	t.close();
-	File t = SD.open("test.txt");
-	while(t.availible()){
-		Serial.write(t.read());
+	File test = SD.open("test.txt");
+	while(test.available()){
+		Serial.write(test.read());
 	}
 	Serial.println();
 	return(SD.remove("test.txt"));
@@ -226,7 +228,7 @@ String get_telemetry() {
 	lsm.setupMag(lsm.LSM9DS0_MAGGAIN_2GAUSS);
 	lsm.setupGyro(lsm.LSM9DS0_GYROSCALE_245DPS);
 	sensors_event_t accl, mag, gyro;
-	lsm.getEvent(&accl, &mag, &gyro):
+	lsm.getEvent(&accl, &mag, &gyro, NULL);
 
 	float sensorData[] = {
 		accl.acceleration.x,
@@ -238,7 +240,7 @@ String get_telemetry() {
 		gyro.gyro.x,
 		gyro.gyro.y,
 		gyro.gyro.z
-	}
+	};
 		
 	for(int x = 0; x < 9; x++){
 		telemetry += "," + String(sensorData[x]);
