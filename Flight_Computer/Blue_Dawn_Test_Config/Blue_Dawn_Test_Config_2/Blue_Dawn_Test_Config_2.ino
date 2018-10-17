@@ -31,7 +31,7 @@
 #include <Adafruit_Sensor.h>
 //NFF globals
 #define NUMDATAFIELDS   21      // Number of data fields for each packet.
-#define MAXBUFSIZE      200     // Maximum buffer size for serial packet (200)
+#define MAXBUFSIZE      201     // Maximum buffer size for serial packet (200)
 #define MAXFIELDSIZE    20      // Maximum size of any data field in the serial packet.
 #define SUCCESS         0       // Success return code.
 #define ERROR           -1      // Error return code.
@@ -66,7 +66,7 @@ long int timer = 999999;     // Used as coutndown timer to trigger switch
 
 //function declarations
 int parse_serial_packet(const char* buf, NRdata* flight_data);
-
+String get_telemetry();
 void write_to_register();
 byte read_from_register();
 void set_timer(int duration);
@@ -75,7 +75,7 @@ void set_pin(String type, int pinNumber);
 void jump_reset();
 bool sd_test();
 // This calls the address 0 which apparently "resets" the arduino
-//void(* soft_reset) (void) = 0;
+void(* soft_reset) (void) = 0;
 
 void setup()
 {
@@ -85,7 +85,7 @@ void setup()
 	// to allow for a complete transfer before timing out).
 
 	// Initialize the nff struct and all its data to 0.
-	memset(&flight_info, 0, sizeof(flight_info));
+	//memset(&flight_info, 0, sizeof(flight_info));
 	//set pins
 	pinMode(MOSFET, OUTPUT);
 
@@ -93,7 +93,6 @@ void setup()
 	// jump_reset Assumes there's a jump cable from pin D10 to RESET, don't use it for other things in this test!
 	digitalWrite(10, HIGH);
 	pinMode(10, OUTPUT);
-  Serial.println("setup fin");
 }
 
 
@@ -101,21 +100,19 @@ void loop()
 {
 	//Serial.println("looping");
 	//Init variables
-	String data_str;    //String for storing csv data, to be printed to serial
-	String nff_str;     //String for storing decoded nff data, 
+	//String data_str;    //String for storing csv data, to be printed to serial
+	//String nff_str;     //String for storing decoded nff data, 
 	//optionally appended to data_str at the end of script
 	//TODO: why MAXBUFSIZE twice? 
 	char buffer[MAXBUFSIZE + 1 + MAXBUFSIZE] = {0};      // Buffer for receiving serial packets.
 	int res = 0;                                // Value for storing results of function calls.
 
 	// collect spacecraft time at start
-	double start_time = millis();
-	data_str = String(start_time); 
-
+	//double start_time = millis();
+	//data_str = String(start_time); 
 	// Read from serial up to the maximum serial packet size.
 	res = Serial.readBytes(buffer, MAXBUFSIZE);
 	// If no bytes are read, pass and continue collecting telemetry
-
 	if (res != 0)
 	{
 		if (buffer[0] == 'c'){
@@ -147,12 +144,11 @@ void loop()
 					break;
 				case 's':
 					// USING THIS FOR SOFTWARE RESET
-					Serial.println("GSE Soft Reset Recieved");
-					//soft_reset();
+					Serial.println("GSE Soft Reset Received");
+					soft_reset();
 					break;
 				case 'q':
-          Serial.println(get_telemetry());
-					Serial.println("GSE Read Pin Command Received");
+          get_telemetry();
 					break;
 				case 'd':
 					Serial.println("GSE Test SD Command Received");
@@ -162,9 +158,9 @@ void loop()
 					Serial.println("error reading command: command not found");
 			}
 		}
-
+	}
 		//NFF Data
-		else if (buffer[0] == 'n'){
+		/*else if (buffer[0] == 'n'){
 			res = parse_serial_packet(buffer, &flight_info);
 			nff_str += nr_str(&flight_info);
 		}
@@ -181,11 +177,11 @@ void loop()
 
 	if (nff_str != ""){
 		data_str += nff_str;
-	}
+	}*/
 
-	Serial.println("printing data str");
+	//Serial.println("printing data str");
 	//send data packet to GSE
-	Serial.println(data_str); 
+	//Serial.println(data_str); 
 	delay(1000);
 }
 
@@ -214,22 +210,20 @@ void jump_reset() {
 // collect basic blue dawn telemetry and return csv string
 ////////////
 
-
 String get_telemetry() {
-	String telemetry;
+	String telemetry = "";
 
 	//Get Sensor Board Data
 	//This assumes that 5V/GND are correctly connected,
 	//SDA <-> A4 and SCL <-> A5
 	//Just for a test
+ 
 	Adafruit_LSM9DS0 lsm = Adafruit_LSM9DS0(1000);
 	lsm.begin();
 	lsm.setupAccel(lsm.LSM9DS0_ACCELRANGE_2G);
 	lsm.setupMag(lsm.LSM9DS0_MAGGAIN_2GAUSS);
 	lsm.setupGyro(lsm.LSM9DS0_GYROSCALE_245DPS);
-	sensors_event_t accl, mag, gyro;
-	lsm.getEvent(&accl, &mag, &gyro, NULL);
-
+/*
 	float sensorData[] = {
 		accl.acceleration.x,
 		accl.acceleration.y,
@@ -241,15 +235,39 @@ String get_telemetry() {
 		gyro.gyro.y,
 		gyro.gyro.z
 	};
-		
+	
 	for(int x = 0; x < 9; x++){
 		telemetry += "," + String(sensorData[x]);
-	}
+	}*/
 	// Mosfet
 	mosfet_on = digitalRead(MOSFET);
 	telemetry += "," + String(mosfet_on);
 	//telemetry += "," + String(mosfet_on ? "1" : "0");
-	return telemetry;
+
+// arduino is low on memory
+sensors_event_t a;
+  lsm.getEvent(&a, NULL, NULL, NULL);
+
+ 
+ Serial.print("Accel X: "); Serial.print(a.acceleration.x); Serial.print(" ");
+  Serial.print("  \tY: "); Serial.print(a.acceleration.y);       Serial.print(" ");
+  Serial.print("  \tZ: "); Serial.print(a.acceleration.z);     Serial.println("  \tm/s^2");
+  
+lsm.getEvent(NULL, &a, NULL, NULL);
+  // print out magnetometer data
+  Serial.print("Magn. X: "); Serial.print(a.magnetic.x); Serial.print(" ");
+  Serial.print("  \tY: "); Serial.print(a.magnetic.y);       Serial.print(" ");
+  Serial.print("  \tZ: "); Serial.print(a.magnetic.z);     Serial.println("  \tgauss");
+
+  lsm.getEvent(NULL, NULL, &a, NULL);
+  // print out gyroscopic data
+  Serial.print("Gyro  X: "); Serial.print(a.gyro.x); Serial.print(" ");
+  Serial.print("  \tY: "); Serial.print(a.gyro.y);       Serial.print(" ");
+  Serial.print("  \tZ: "); Serial.print(a.gyro.z);     Serial.println("  \tdps");
+
+
+  
+  return;
 
 	// Flowmeter
 	/*
