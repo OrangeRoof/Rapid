@@ -1,0 +1,66 @@
+06:57:45 127.0.0.1 - - [24/Oct/2018 18:57:45] "GET /makeconf?%2Fdev%2Fcu.MALS=&%2Fdev%2Fcu.SOC=&%2Fdev%2Fcu.Bluetooth-Incoming-Port=&%2Fdev%2Fcu.AlexsAirPods-WirelessiAP-1=&%2Fdev%2Fcu.usbmodem141230=bluedawn_tp HTTP/1.1" 302 -
+06:57:46 127.0.0.1 - - [24/Oct/2018 18:57:46] "GET /monitor HTTP/1.1" 500 -
+06:57:46 127.0.0.1 - - [24/Oct/2018 18:57:46] "GET /monitor?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+06:57:46 127.0.0.1 - - [24/Oct/2018 18:57:46] "GET /monitor?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+06:57:46 127.0.0.1 - - [24/Oct/2018 18:57:46] "GET /monitor?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+06:57:46 127.0.0.1 - - [24/Oct/2018 18:57:46] "GET /monitor?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+06:57:46 127.0.0.1 - - [24/Oct/2018 18:57:46] "GET /monitor?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+06:57:47 127.0.0.1 - - [24/Oct/2018 18:57:47] "GET /monitor HTTP/1.1" 500 -
+06:57:47 127.0.0.1 - - [24/Oct/2018 18:57:47] "GET /monitor?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+06:57:47 127.0.0.1 - - [24/Oct/2018 18:57:47] "GET /monitor?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+06:57:47 127.0.0.1 - - [24/Oct/2018 18:57:47] "GET /monitor?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+06:57:47 127.0.0.1 - - [24/Oct/2018 18:57:47] "GET /monitor?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+06:57:47 127.0.0.1 - - [24/Oct/2018 18:57:47] "GET /monitor?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+06:57:48 tp.bluedawn_tp: [('spacecraft_time', 0.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+06:57:48 127.0.0.1 - - [24/Oct/2018 18:57:48] "GET /monitor?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+06:57:48 127.0.0.1 - - [24/Oct/2018 18:57:48] "GET /monitor?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+06:57:48 127.0.0.1 - - [24/Oct/2018 18:57:48] "GET /monitor?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+06:57:48 127.0.0.1 - - [24/Oct/2018 18:57:48] "GET /monitor?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+06:57:48 127.0.0.1 - - [24/Oct/2018 18:57:48] "GET /monitor?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+06:57:48 127.0.0.1 - - [24/Oct/2018 18:57:48] "GET /monitor HTTP/1.1" 200 -
+06:58:12 tp.bluedawn_tp: [('spacecraft_time', 1021.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+06:58:12 127.0.0.1 - - [24/Oct/2018 18:58:12] "GET /get?/dev/cu.usbmodem141230&_=1540432668352 HTTP/1.1" 200 -
+06:58:23 tp.bluedawn_tp: [('spacecraft_time', 2042.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+06:58:23 127.0.0.1 - - [24/Oct/2018 18:58:23] "GET /get?/dev/cu.usbmodem141230&_=1540432668353 HTTP/1.1" 200 -
+06:58:26 tp.bluedawn_tp: [('spacecraft_time', 3063.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+06:58:26 127.0.0.1 - - [24/Oct/2018 18:58:26] "GET /get?/dev/cu.usbmodem141230&_=1540432668354 HTTP/1.1" 200 -
+06:58:34 tp.bluedawn_tp: [('spacecraft_time', 4084.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+06:58:34 127.0.0.1 - - [24/Oct/2018 18:58:34] "GET /get?/dev/cu.usbmodem141230&_=1540432668355 HTTP/1.1" 200 -
+06:59:52 tp.bluedawn_tp: [('spacecraft_time', 5105.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+06:59:52 127.0.0.1 - - [24/Oct/2018 18:59:52] "GET /get?/dev/cu.usbmodem141230&_=1540432668356 HTTP/1.1" 200 -
+07:00:09 tp.bluedawn_tp: [('spacecraft_time', 6126.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:00:09 127.0.0.1 - - [24/Oct/2018 19:00:09] "GET /get?/dev/cu.usbmodem141230&_=1540432668357 HTTP/1.1" 200 -
+07:00:29 tp.bluedawn_tp: [('spacecraft_time', 7147.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.0591)]
+07:00:29 127.0.0.1 - - [24/Oct/2018 19:00:29] "GET /get?/dev/cu.usbmodem141230&_=1540432668358 HTTP/1.1" 200 -
+07:00:36 tp.bluedawn_tp: [('spacecraft_time', 8169.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:00:36 127.0.0.1 - - [24/Oct/2018 19:00:36] "GET /get?/dev/cu.usbmodem141230&_=1540432668359 HTTP/1.1" 200 -
+07:00:45 tp.bluedawn_tp: [('spacecraft_time', 9191.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:00:45 127.0.0.1 - - [24/Oct/2018 19:00:45] "GET /get?/dev/cu.usbmodem141230&_=1540432668360 HTTP/1.1" 200 -
+07:03:17 tp.bluedawn_tp: [('spacecraft_time', 10213.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:03:17 127.0.0.1 - - [24/Oct/2018 19:03:17] "GET /get?/dev/cu.usbmodem141230&_=1540432668361 HTTP/1.1" 200 -
+07:03:28 tp.bluedawn_tp: [('spacecraft_time', 11235.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:03:28 127.0.0.1 - - [24/Oct/2018 19:03:28] "GET /get?/dev/cu.usbmodem141230&_=1540432668362 HTTP/1.1" 200 -
+07:03:37 tp.bluedawn_tp: [('spacecraft_time', 12257.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:03:37 127.0.0.1 - - [24/Oct/2018 19:03:37] "GET /get?/dev/cu.usbmodem141230&_=1540432668363 HTTP/1.1" 200 -
+07:03:50 tp.bluedawn_tp: [('spacecraft_time', 13279.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:03:50 127.0.0.1 - - [24/Oct/2018 19:03:50] "GET /get?/dev/cu.usbmodem141230&_=1540432668364 HTTP/1.1" 200 -
+07:04:16 tp.bluedawn_tp: [('spacecraft_time', 14301.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:04:16 127.0.0.1 - - [24/Oct/2018 19:04:16] "GET /get?/dev/cu.usbmodem141230&_=1540432668365 HTTP/1.1" 200 -
+07:04:21 tp.bluedawn_tp: [('spacecraft_time', 15323.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:04:21 127.0.0.1 - - [24/Oct/2018 19:04:21] "GET /get?/dev/cu.usbmodem141230&_=1540432668366 HTTP/1.1" 200 -
+07:04:35 tp.bluedawn_tp: [('spacecraft_time', 16345.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:04:35 127.0.0.1 - - [24/Oct/2018 19:04:35] "GET /get?/dev/cu.usbmodem141230&_=1540432668367 HTTP/1.1" 200 -
+07:04:51 tp.bluedawn_tp: [('spacecraft_time', 17367.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:04:51 127.0.0.1 - - [24/Oct/2018 19:04:51] "GET /get?/dev/cu.usbmodem141230&_=1540432668368 HTTP/1.1" 200 -
+07:05:02 tp.bluedawn_tp: [('spacecraft_time', 18388.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:05:02 127.0.0.1 - - [24/Oct/2018 19:05:02] "GET /get?/dev/cu.usbmodem141230&_=1540432668369 HTTP/1.1" 200 -
+07:05:17 tp.bluedawn_tp: [('spacecraft_time', 19409.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:05:17 127.0.0.1 - - [24/Oct/2018 19:05:17] "GET /get?/dev/cu.usbmodem141230&_=1540432668370 HTTP/1.1" 200 -
+07:06:53 tp.bluedawn_tp: [('spacecraft_time', 20430.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:06:53 127.0.0.1 - - [24/Oct/2018 19:06:53] "GET /get?/dev/cu.usbmodem141230&_=1540432668371 HTTP/1.1" 200 -
+07:07:06 tp.bluedawn_tp: [('spacecraft_time', 21451.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:07:06 127.0.0.1 - - [24/Oct/2018 19:07:06] "GET /get?/dev/cu.usbmodem141230&_=1540432668372 HTTP/1.1" 200 -
+07:07:09 tp.bluedawn_tp: [('spacecraft_time', 22472.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:07:09 127.0.0.1 - - [24/Oct/2018 19:07:09] "GET /get?/dev/cu.usbmodem141230&_=1540432668373 HTTP/1.1" 200 -
+07:07:10 tp.bluedawn_tp: [('spacecraft_time', 23493.0), ('bd_acceleration_x', 0.0), ('bd_acceleration_y', 0.0), ('bd_acceleration_z', 0.0), ('bd_ang_vel_x', 0.0), ('bd_ang_vel_y', 0.0), ('bd_ang_vel_z', 0.0), ('bd_mag_x', 0.0), ('bd_mag_y', 0.0), ('bd_mag_z', 0.0), ('mosfet_state', 0.0), ('flow_rate', 0.056372727272727276)]
+07:07:10 127.0.0.1 - - [24/Oct/2018 19:07:10] "GET /get?/dev/cu.usbmodem141230&_=1540432668374 HTTP/1.1" 200 -

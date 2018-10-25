@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> <script></script>
     <script>
     // the idea is to have as little js as possible. So jinja will be responsible for generating chart templates,
-    // all this does it 1) get data to populate the charts and 2) updating the data as it comes in
+    // all this does is 1) get data to populate the charts and 2) updating the data as it comes in
 
     function initialize(){
     $( "div[class=container]" ).each(function(i, e){
@@ -40,11 +40,15 @@
         dataType: 'json',
         cache: false,
         success: (data) => {
-            // update the data
+           $.each(data, function(){
+				$.find("#" + this[0])[0].textContent = this[1]
+			})
         },
     })
     }
-
+    {% for p in ports %}
+    window.setInterval(update("{{p[0]}}"), 1000);
+    {% endfor %}
 </script>
 	<style>
 	canvas{
@@ -88,7 +92,7 @@
 	<div class="container" id="{{p[0]}}">
     <div class="data-container" id="{{ ['data-', p[0]]|join }}">
         {% for v in p[1] %}
-            <div class="data"><strong>{{v[0]}}: </strong><span> {{v[1]}} </span></div>
+            <div class="data"><strong>{{v[0]}}: </strong><span id="{{v[0]}}"> {{v[1]}} </span></div>
         {% endfor %}
     </div>
 	</div>
