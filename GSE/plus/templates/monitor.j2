@@ -5,29 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> <script></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
     <script>
     // the idea is to have as little js as possible. So jinja will be responsible for generating chart templates,
     // all this does is 1) get data to populate the charts and 2) updating the data as it comes in
+    var ChartCollection = {};
+    var tick = 0;
 
     function initialize(){
-    $( "div[class=container]" ).each(function(i, e){
+    $( "div[class=container]" ).each((i, e) => {
         var div = document.createElement("div")
-        div.classList.add('chart-container')
         var canvas = document.createElement("canvas")
+        div.classList.add('chart-container')
         div.appendChild(canvas);
-            e.appendChild(div);
+        e.appendChild(div);
+
         var ctx = canvas.getContext('2d');
-        new Chart(ctx, {
-        type: 'line',
-        options: {
-            responsive: true,
-            animation: {
-            easing: 'linear'
+        ChartCollection[e.id] = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['', '', '', '', '', '', ''],
             },
-        }
+            options: {
+                elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
+                },
+                responsive: true,
+                animation: {
+                    duration: 0,
+                },
+                hover: {
+                    animationDuration: 0, // duration of animations when hovering an item
+                },
+                responsiveAnimationDuration: 0,
+            }
         });
-    })
+    });
+
+    $( "strong" ).click(function(){
+        var c = ChartCollection[this.parentElement.parentElement.parentElement.id];
+        var l = $(this).siblings()[0].id;
+        if (c.data.datasets.filter(d => d.label === l)[0] === undefined){
+		    c.data.datasets.push({
+			    label: l,
+                // Stackoverflow Hacks
+                borderColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6),
+			    data: Array(c.data.labels.length).fill(NaN),
+			    fill: false
+		    })
+        }
+        else {
+           c.data.datasets.splice(c.data.datasets.findIndex(d => d.label == l), 1)
+        }
+    });
     }
 
     window.onload = () => {
@@ -35,21 +67,36 @@
     }
 
     function update(port){
+    // Chart is at ChartCollection[port]
     $.ajax({
         url: "../get?" + port,
         dataType: 'json',
         cache: false,
-        success: (data) => {
-           $.each(data, function(){
-				$.find("#" + this[0])[0].textContent = this[1]
+        success: (r) => {
+            var c = ChartCollection[port]
+            // Put in next datapoint, shift() removes the first one
+            c.data.labels.push(tick);
+            c.data.labels.shift();
+            $.each(r, function(){
+               // search for a dataset that fits the label
+                var da = c.data.datasets.filter(d => d.label === this[0])[0];
+				if (typeof da !== 'undefined'){
+					da.data.push(this[1]);
+					da.data.shift();
+				}
+			    $(document.getElementById(port)).find("#" + this[0])[0].textContent = this[1]
 			})
+            c.update();
         },
     })
     }
-    {% for p in ports %}
-    window.setInterval(update("{{p[0]}}"), 1000);
-    {% endfor %}
-</script>
+    window.setInterval(() => {
+        tick++;
+        {% for p in ports %}
+       update("{{p[0]}}")
+        {% endfor %}
+    }, 1000)
+    </script>
 	<style>
 	canvas{
 		-moz-user-select: none;

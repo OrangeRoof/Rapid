@@ -1,8 +1,0 @@
-05:35:07 127.0.0.1 - - [24/Oct/2018 17:35:07] "GET /makeconf?%2Fdev%2Fcu.MALS=bluedawn_tp&%2Fdev%2Fcu.SOC=&%2Fdev%2Fcu.Bluetooth-Incoming-Port=&%2Fdev%2Fcu.AlexsAirPods-WirelessiAP-1= HTTP/1.1" 302 -
-05:35:07 127.0.0.1 - - [24/Oct/2018 17:35:07] "GET /monitor HTTP/1.1" 500 -
-05:35:07 127.0.0.1 - - [24/Oct/2018 17:35:07] "GET /monitor?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
-05:35:07 127.0.0.1 - - [24/Oct/2018 17:35:07] "GET /monitor?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
-05:35:07 127.0.0.1 - - [24/Oct/2018 17:35:07] "GET /monitor?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
-05:35:07 127.0.0.1 - - [24/Oct/2018 17:35:07] "GET /monitor?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
-05:35:07 127.0.0.1 - - [24/Oct/2018 17:35:07] "GET /monitor?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
-05:35:07 127.0.0.1 - - [24/Oct/2018 17:35:07] "GET /monitor?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
